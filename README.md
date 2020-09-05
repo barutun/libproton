@@ -13,3 +13,7 @@
 ## 含有物
 - テンプレ
 - binary_search
+
+## 更新履歴
+- 1.0.1
+    - binary_searchの出力値をそのままぶち込むと場合によってstd::out_of_rangeするのでその場合丸めました
