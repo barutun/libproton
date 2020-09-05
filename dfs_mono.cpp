@@ -20,7 +20,7 @@ int main()
         return G;
     };
 
-    std::vector<bool> graph_seen(100, false);  //100には頂点数を入れる。下のdfsは再帰なので外でdfsを定義する必要あり。
+    std::vector<bool> graph_seen(100, false);  //100には頂点数を入れる。下のdfsは再帰なので外で定義する必要あり。
 
     std::function<void(const Graph&, const ll&, std::vector<bool>&)> dfs_mono = [&](const Graph& dfs_G, const ll& start_point, std::vector<bool>& dfs_seen) {
         dfs_seen[start_point] = true;             // start_point を訪問済にする
@@ -39,7 +39,7 @@ int main()
 //グラフ型(G[index]に頂点indexから直接行ける点の列挙が入っている)を返す
 //graphのiteratorが1次元の時しか対応していない
 
-//libproton 1.1.0  dfs_mono
+//libproton 1.1.0 dfs_mono
 //graphのiteratorが1次元の時しか対応していない
 //dfs_GにはGraph型を, start_pointには探索開始点を, dfs_seenには頂点数の大きさを持った配列を入れてください。
 //返す値はない。dfs_seenが訪問済みでtrueに切り替わっているはず。やりたい動作は使用時に関数中に追記してください。
