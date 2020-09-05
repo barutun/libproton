@@ -8,29 +8,31 @@
 const ll MOD = 1000000007;
 const ll INF = 1061109567;
 // 頂点のindexが1変数で表せるグラフなら使えます
+using Graph = std::vector<std::vector<ll>>;
+Graph make_graph(const ll& num_points, const ll& num_sides, const std::vector<std::vector<ll>>& side_pairs)
+{
+    Graph G(num_points);
+    for (ll i = 0; i < num_sides; ++i) {
+        G[side_pairs.at(i).at(0)].push_back(side_pairs.at(i).at(1));
+        //G[side_pairs.at(i).at(1)].push_back(side_pairs.at(i).at(0)); //無向グラフ
+    }
+    return G;
+}
+
+std::vector<bool> graph_seen(100, false);  //100には頂点数を入れる。下のdfsは再帰なので外で定義する必要あり。
+
+void dfs_mono(const Graph& dfs_G, const ll& start_point, std::vector<bool>& dfs_seen)
+{
+    dfs_seen[start_point] = true;             // start_point を訪問済にする
+    for (auto next_v : dfs_G[start_point]) {  // start_point から行ける各頂点 next_v について
+        if (dfs_seen[next_v])
+            continue;                       // next_v が探索済だったらスルー
+        dfs_mono(dfs_G, next_v, dfs_seen);  // 再帰的に探索
+    }
+}
+
 int main()
 {
-    using Graph = std::vector<std::vector<ll>>;
-    auto make_graph = [&](const ll& num_points, const ll& num_sides, const auto& side_pairs) {
-        Graph G(num_points);
-        for (ll i = 0; i < num_sides; ++i) {
-            G[side_pairs.at(i).at(0)].push_back(side_pairs.at(i).at(1));
-            //G[side_pairs.at(i).at(1)].push_back(side_pairs.at(i).at(0)); //無向グラフ
-        }
-        return G;
-    };
-
-    std::vector<bool> graph_seen(100, false);  //100には頂点数を入れる。下のdfsは再帰なので外で定義する必要あり。
-
-    std::function<void(const Graph&, const ll&, std::vector<bool>&)> dfs_mono = [&](const Graph& dfs_G, const ll& start_point, std::vector<bool>& dfs_seen) {
-        dfs_seen[start_point] = true;             // start_point を訪問済にする
-        for (auto next_v : dfs_G[start_point]) {  // start_point から行ける各頂点 next_v について
-            if (dfs_seen[next_v])
-                continue;                       // next_v が探索済だったらスルー
-            dfs_mono(dfs_G, next_v, dfs_seen);  // 再帰的に探索
-        }
-    };
-
     return 0;
 }
 //libproton 1.1.0 make_graph
