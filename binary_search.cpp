@@ -6,9 +6,18 @@
 #define No() std::cout << "No" << std::endl
 #define Say(s) std::cout << s << std::endl
 const ll MOD = 1000000007;
-const ll INF = 1061109567;
+
 
 template <class T>
+ll binary_search(const T& binary_key, const std::vector<T>& binary_vec)
+{
+    std::sort(binary_vec.begin(), binary_vec.end());
+    auto it = std::lower_bound(binary_vec.begin(), binary_vec.end(), binary_key);
+    return it;
+}
+
+
+/*template <class T>
 ll binary_search(const T& binary_key, const std::vector<T>& binary_vec)
 {
     ll bin_ok = (ll)binary_vec.size();
@@ -23,7 +32,7 @@ ll binary_search(const T& binary_key, const std::vector<T>& binary_vec)
     if (bin_ok == binary_vec.size())
         --bin_ok;
     return bin_ok;
-}
+}*/
 
 template <class T>
 ll binary_search_rev(const T& binary_key, const std::vector<T>& binary_vec)

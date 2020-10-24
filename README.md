@@ -1,5 +1,5 @@
-# libproton 1.1.2
-- これはAtcoderを始めたばかりの茶色coderが作った弱いlibraryです
+# libproton 1.4.0
+- これは緑のよわよわの私が茶色だった時に作リ始めた弱いlibraryです
     - 公開になってるのは一銭も支払ってないからで,別にあなたに見せたかったわけじゃないです
         - 普通にバックアップと過去に戻れるようにしたかったからです
     - てか恥ずかしいです
@@ -15,8 +15,17 @@
 - binary_search
 - dfs_mono
 - dfs_grid
-
+- bfs_mono
+- bfs_grid
+- math
+    - modpow
 ## 更新履歴
+- 1.4.1
+    - binaryはstd
+    - math_divisor
+- 1.4.0
+    - verが飛んだ
+    - bfsとmath_modpow
 - 1.1.2
     - dfs_gridを追加
     - dfs系は適宜改変するのが前提になりそう
